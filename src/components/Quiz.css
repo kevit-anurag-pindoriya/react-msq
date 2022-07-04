@@ -1,0 +1,31 @@
+.quiz-navbutton {
+  margin-top: 20px;
+}
+
+.quiz__qutitioncount {
+  font-size: 60px;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  background-color: rgb(194, 186, 186);
+}
+.quiz-navbutton-button {
+  background-color: rgb(255, 194, 57);
+  font-size: 29px;
+  margin-top: 20vh;
+  border-radius: 5px;
+}
+
+.quiz-showanswer-button {
+  background-color: rgb(255, 194, 57);
+  font-size: 29px;
+  margin-top: 2vh;
+  border-radius: 5px;
+}
+.quiz-navbutton {
+  display: flex;
+  justify-content: space-around;
+  width: 30vw;
+  align-content: center;
+  align-items: center;
+}
