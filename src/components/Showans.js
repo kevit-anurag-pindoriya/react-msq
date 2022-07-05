@@ -1,11 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useState } from "react";
+import { useSelector } from "react-redux/es/exports";
+import { Redirect } from "react-router-dom";
 import "./Showans.css";
 function Showans() {
-  const [ans, setAns] = useState(0);
+  const islogin = useSelector((state) => state.loginreducer);
   let count = 0;
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.reducer);
   console.log(state);
   state.forEach((element) => {
     console.log("this is a data", element);
@@ -13,7 +13,15 @@ function Showans() {
       count++;
     }
   });
-  return <div className="showans-report">You coreect answer is {count}</div>;
+  return (
+    <>
+      {islogin ? (
+        <div className="showans-report">You coreect answer is {count}</div>
+      ) : (
+        <Redirect to="/"></Redirect>
+      )}
+    </>
+  );
 }
 
 export default Showans;

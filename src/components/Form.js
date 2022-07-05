@@ -1,19 +1,41 @@
 import React from "react";
 import "./Form.css";
 import { Link } from "react-router-dom";
-import Quiz from "./Quiz";
+
 import { useState } from "react";
+import { useRef } from "react";
+import { useDispatch } from "react-redux/es/exports";
 
 function From() {
+  const dispatch = useDispatch();
   const [lang, setLang] = useState("English");
-  console.log("This is a choos state", lang);
+
+  const [isLogin, setIsLogin] = useState(false);
+  const nameref = useRef();
+  const validator = () => {
+    if (nameref.current.value === "") {
+      alert("Enter name");
+      setIsLogin(false);
+
+      return;
+    }
+    setIsLogin(true);
+    dispatch({ type: "LOGIN", payload: true });
+    dispatch({ type: "ADDLANG", payload: lang });
+  };
   return (
     <>
       <section className="form-all">
         <div className="form">
           <div className="form__div-name">
             <label htmlFor="name">Enter Name : </label>
-            <input type="text" id="name" className="size"></input>
+            <input
+              type="text"
+              id="name"
+              className="size"
+              ref={nameref}
+              required
+            ></input>
           </div>
 
           <div className="form__div-gender">
@@ -34,10 +56,13 @@ function From() {
             <Link
               to={{
                 pathname: "/quiz",
-                state: { language: lang, islogin: true },
+                state: { language: lang, islogin: isLogin },
               }}
             >
-              <button className="form__div-button--button size">
+              <button
+                className="form__div-button--button size"
+                onClick={validator}
+              >
                 Let's beging
               </button>
             </Link>
