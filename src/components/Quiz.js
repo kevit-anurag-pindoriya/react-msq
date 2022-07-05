@@ -4,7 +4,6 @@ import Question from "./Question";
 import { useLocation } from "react-router-dom";
 import { Redirect, Link } from "react-router-dom";
 import "./Quiz.css";
-
 import { useSelector } from "react-redux/es/exports";
 
 function Quiz() {
